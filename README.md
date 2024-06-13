@@ -111,4 +111,8 @@ sudo apt-get update
 # Install Jenkins
 sudo apt-get install jenkins -y
 ```
+### 5. Create Nexus using docker container
 
+```bash
+docker run -d --name nexus -p 8081:8081 sonatype/nexus3:latest
+```
