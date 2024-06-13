@@ -157,6 +157,7 @@ sudo usermod -aG docker $USER
 ### 9. Ngrok
 
 ```bash
+#!/bin/bash
 # Download ngrok
 wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
 
