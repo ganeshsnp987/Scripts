@@ -111,8 +111,67 @@ sudo apt-get update
 # Install Jenkins
 sudo apt-get install jenkins -y
 ```
-### 5. Create Nexus using docker container
+### 6. Create Nexus using docker container
 
 ```bash
 docker run -d --name nexus -p 8081:8081 sonatype/nexus3:latest
+```
+### 7. Trivy
+
+```bash
+#!/bin/bash
+sudo apt-get install wget apt-transport-https gnupg lsb-release
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+sudo apt-get update
+sudo apt-get install trivy -y
+```
+### 8. Minikube
+
+```bash
+#!/bin/bash
+
+sudo su
+apt-get update -y
+apt-get upgrade -y
+apt-get install net-tools -y
+
+apt-get update -y
+apt-get install docker.io -y
+systemctl start docker
+systemctl enable docker
+
+apt-get update -y
+apt install -y curl wget apt-transport-https
+wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+cp -rvf minikube-linux-amd64 /usr/local/bin/minikube
+chmod 755 /usr/local/bin/minikube
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+chmod 755 /usr/local/bin/kubectl
+
+minikube start --force
+
+sudo usermod -aG docker $USER
+```
+### 9. Ngrok
+
+```bash
+# Download ngrok
+wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+
+# Extract ngrok
+tar -xvzf ngrok-v3-stable-linux-amd64.tgz
+
+# Move ngrok to a directory in your PATH
+sudo mv ngrok /usr/local/bin/
+
+# Verify installation
+ngrok --version
+
+# (Optional) Connect your ngrok account
+ngrok authtoken <your_auth_token>
+
+# Start ngrok
+ngrok http 8080
 ```
