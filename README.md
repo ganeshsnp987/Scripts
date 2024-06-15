@@ -195,6 +195,10 @@ The command sudo ufw allow 8000 is used to allow incoming network traffic on por
 ```bash
 sudo ufw allow 8000
 ```
+The command sudo ufw allow 8088 is used to allow incoming network traffic on port 8000 through the UFW (Uncomplicated Firewall) on your Ubuntu system. It permits access to a specific port for network services or applications.
+```bash
+sudo ufw allow 8088
+```
 By running these commands, you can both check the current status of your firewall and activate it to apply the defined rules and settings.
 ```bash
 sudo ufw enable
