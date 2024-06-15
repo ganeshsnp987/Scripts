@@ -208,6 +208,11 @@ The command sudo /opt/splunk/bin/splunk start is used to start the Splunk Enterp
 ```bash
 sudo /opt/splunk/bin/splunk start
 ```
+Copy Your Splunk Instance Public IP Address: Navigate to your cloud provider’s console and find the public IP address of your Splunk instance.
+Log in with Your Credentials: You’ll be prompted to log in with the administrator username and password you created during the setup process (typically using the command sudo /opt/splunk/bin/splunk enable boot-start).
+```bash
+<splunk-public-ip:8000>
+```
 
 
 
