@@ -1,5 +1,5 @@
 #  Scrpits
-### 1. Script1 for Java, Jenkins, Docker.
+### 1. Script1 for Java, Jenkins, Docker, SonarQube, Trivy.
 
 ```bash
 #!/bin/bash
