@@ -277,27 +277,27 @@ For the password, you have to provide the below command and copy it.
 ```bash
 echo $ARGO_PWD
 ```
-now, Click on Sign in and you will see this page.
-Now click on the Setting gear icon in the left side panel.
-Click on Repositories and click on Connect Repo Using HTTPS.
-Add Github details, Type as git, Project as default and provide the GitHub URL of this manifest and click on connect.
-You will get Connection Status as Successful.
-Click on Manage Your application.
-You will see page and click on New App. 
-Now provide the details: 
-   Application name: Your_projectname
-   Project name: Default
-   Sync Policy: Automatic
-   Repo URL: DEPLOYMENT_MANIFEST_URL
-   Revision: HEAD
-   Path: ./
-   Cluster URL: https://kubernetes.default.svc
-   Namespace: default
-Click on Create.
-You can see our app is created in Argo-cd. 
-Click on Project_name and it will create another load balancer in AWS.
-Now click on three dots beside Project_name-service and click on the details.
-Now copy the hostname address and Paste it in a browser you will see your application is running.
+now, Click on Sign in and you will see this page.<br>
+Now click on the Setting gear icon in the left side panel.<br>
+Click on Repositories and click on Connect Repo Using HTTPS.<br>
+Add Github details, Type as git, Project as default and provide the GitHub URL of this manifest and click on connect.<br>
+You will get Connection Status as Successful.<br>
+Click on Manage Your application.<br>
+You will see page and click on New App. <br>
+Now provide the details:<br>
+ -  Application name: Your_projectname<br>
+ -  Project name: Default<br>
+ -  Sync Policy: Automatic<br>
+ -  Repo URL: DEPLOYMENT_MANIFEST_URL<br>
+ -  Revision: HEAD<br>
+ -  Path: ./<br>
+ -  Cluster URL: https://kubernetes.default.svc<br>
+ -  Namespace: default<br>
+Click on Create.<br>
+You can see our app is created in Argo-cd. <br>
+Click on Project_name and it will create another load balancer in AWS.<br>
+Now click on three dots beside Project_name-service and click on the details.<br>
+Now copy the hostname address and Paste it in a browser you will see your application is running.<br>
 
 If you don’t get the output
 Go to Jenkins machine SSH Putty and provide the below the command:
@@ -307,7 +307,7 @@ kubectl get all
 Open the port that you see in application-service for the Node group Ec2 instance.
 Then you can also see your running application on 
 ```bash
-<Public ip of Node group Ec2 instance >:Port_Number of application service
+<Public ip of Node group Ec2 instance>:Port_Number of application service
 ```
 
 Deletion of Argocd App:
