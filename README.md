@@ -225,9 +225,101 @@ Log in with Your Credentials: You’ll be prompted to log in with the administra
 <splunk-public-ip:8000>
 ```
 
+### 10. ARGO-CD SETUP
+Let’s install ArgoCD from link (https://archive.eksworkshop.com/intermediate/290_argocd/install)
+All those components could be installed using a manifest provided by the Argo Project: use the below commands:
+```bash
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.7/manifests/install.yaml
+```
+
+By default, argocd-server is not publicly exposed. For this project, we will use a Load Balancer to make it usable:
+```bash
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+```
+One load balancer will created in the AWS, Wait about 2 minutes for the LoadBalancer creation.
 
 
+when you run this command, it will export the hostname of the ArgoCD server’s load balancer and store it in the ARGOCD_SERVER environment variable, 
+which you can then use in other commands or scripts to interact with the ArgoCD server. This can be useful when you need to access the ArgoCD web UI or 
+interact with the server programmatically.
+```bash
+sudo apt install jq -y
+export ARGOCD_SERVER=`kubectl get svc argocd-server -n argocd -o json | jq --raw-output '.status.loadBalancer.ingress[0].hostname'`
+```
 
+If run this command you will get the load balancer external IP:
+```bash
+echo $ARGOCD_SERVER
+```
+
+Login: The command you provided is used to extract the password for the initial admin user of ArgoCD, decode it from base64 encoding, and store it in an environment variable named ARGO_PWD.
+```bash
+export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
+```
+
+If you want to see your password provide the below command:
+```bash
+echo $ARGO_PWD
+```
+
+Now copy the load balancer IP and paste it into the browser
+```bash
+echo $ARGOCD_SERVER
+```
+
+Now you will see Error page. if you get an error click on advanced and click on proceed.
+Now you will see log in page to ArgoCD
+```bash
+Username is admin
+```
+For the password, you have to provide the below command and copy it.
+```bash
+echo $ARGO_PWD
+```
+now, Click on Sign in and you will see this page.
+Now click on the Setting gear icon in the left side panel.
+Click on Repositories and click on Connect Repo Using HTTPS.
+Add Github details, Type as git, Project as default and provide the GitHub URL of this manifest and click on connect.
+You will get Connection Status as Successful.
+Click on Manage Your application.
+You will see page and click on New App. 
+Now provide the details: 
+   Application name: Your_projectname
+   Project name: Default
+   Sync Policy: Automatic
+   Repo URL: DEPLOYMENT_MANIFEST_URL
+   Revision: HEAD
+   Path: ./
+   Cluster URL: https://kubernetes.default.svc
+   Namespace: default
+Click on Create.
+You can see our app is created in Argo-cd. 
+Click on Project_name and it will create another load balancer in AWS.
+Now click on three dots beside Project_name-service and click on the details.
+Now copy the hostname address and Paste it in a browser you will see your application is running.
+
+If you don’t get the output
+Go to Jenkins machine SSH Putty and provide the below the command:
+```bash
+kubectl get all
+```
+Open the port that you see in application-service for the Node group Ec2 instance.
+Then you can also see your running application on 
+```bash
+<Public ip of Node group Ec2 instance >:Port_Number of application service
+```
+
+Deletion of Argocd App:
+First, delete the app in ARGO CD
+Go to Argo CD and click on Application
+Click on Delete. Now Provide the app name and click on OK. The app is deleted now.
+
+Now go to Putty and Remove Argo CD Service.
+```bash
+kubectl delete svc argocd-server -n argocd
+```
+Now you can see in the Aws console that load balancers will be deleted.
 
 
 
