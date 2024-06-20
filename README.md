@@ -226,6 +226,12 @@ Log in with Your Credentials: You’ll be prompted to log in with the administra
 ```
 
 ### 10. ARGO-CD SETUP
+Let’s Update the kubeconfig<br>
+Go to Putty of your Jenkins instance SSH and enter the below command:<br>
+aws eks update-kubeconfig --name <CLUSTER NAME> --region <CLUSTER REGION>
+```bash
+aws eks update-kubeconfig --name EKS_CLOUD --region ap-south-1
+```
 Let’s install ArgoCD from link (https://archive.eksworkshop.com/intermediate/290_argocd/install)
 All those components could be installed using a manifest provided by the Argo Project: use the below commands:
 ```bash
