@@ -85,4 +85,5 @@ resources "aws_dynamodb_table" "my_dynamo_table" {
    name = "LockID"
    type = "S"
 }
+}
 
