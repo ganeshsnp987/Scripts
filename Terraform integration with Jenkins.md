@@ -7,7 +7,7 @@ This project is parameterised
 Name: action
 Choices: apply/destroy
 Description: Select the choice Devopro_ganesh?
-
+```bash
 pipeline{
     agent any
     stages {
@@ -51,4 +51,4 @@ pipeline{
         }
     }
 }
-
+```
