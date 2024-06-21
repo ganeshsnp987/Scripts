@@ -74,7 +74,7 @@ resource "aws_instance" "web" {
 }
 
 resources "aws_s3_bucket" "my_bucket" {
- bucket = "ganeshsnp987"
+ bucket = "tetris-backend"
 }
 
 resources "aws_dynamodb_table" "my_dynamo_table" {
