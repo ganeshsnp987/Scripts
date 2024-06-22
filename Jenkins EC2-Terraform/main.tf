@@ -73,17 +73,3 @@ resource "aws_instance" "web" {
   }
 }
 
-resources "aws_s3_bucket" "my_bucket" {
- bucket = "tetris-backend"
-}
-
-resources "aws_dynamodb_table" "my_dynamo_table" {
- name = "mydb_table"
- billing_mode = "PAY_PER_REQUEST"
- hash_key = "LockID"
- attribute {
-   name = "LockID"
-   type = "S"
-}
-}
-
