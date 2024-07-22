@@ -328,5 +328,45 @@ kubectl delete svc argocd-server -n argocd
 Now you can see in the Aws console that load balancers will be deleted.
 
 
+### 11. Ingress-controller-NGINX
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.11.1/deploy/static/provider/aws/deploy.yaml
+```
+### 12. Install EKS
+
+Please follow the prerequisites doc before this.
+
+## Install a EKS cluster with EKSCTL
+
+```
+eksctl create cluster --name demo-cluster --region us-east-1 
+```
+
+## Delete the cluster
+
+```
+eksctl delete cluster --name demo-cluster --region us-east-1
+```
+
+### 13. Install Argo CD
+
+## Install Argo CD using manifests
+
+```bash
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+
+## Access the Argo CD UI (Loadbalancer service) 
+
+```bash
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+```
+
+## Get the Loadbalancer service IP
+
+```bash
+kubectl get svc argocd-server -n argocd
+```
 
 
