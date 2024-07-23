@@ -473,7 +473,7 @@ first we need to create namespace
 kubectl create ns webapps
 ```
 
-### Creating Service Account
+### Creating Service Account: sa.yaml
 
 
 ```yaml
@@ -484,7 +484,7 @@ metadata:
   namespace: webapps
 ```
 
-### Create Role 
+### Create Role: role.yaml
 
 
 ```yaml
@@ -528,7 +528,7 @@ rules:
     verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 ```
 
-### Bind the role to service account
+### Bind the role to service account: rolebind.yaml
 
 
 ```yaml
@@ -547,7 +547,7 @@ subjects:
   name: jenkins 
 ```
 
-### Generate token using service account in the namespace
+### Generate token using service account in the namespace: secret.yaml
 
 
 ```yaml
@@ -560,7 +560,11 @@ metadata:
     kubernetes.io/service-account.name: jenkins
 ```
 ```
+kubectl apply -f secret.yaml -n webapps
+```
+```
 kubectl describe secret mysecretname -n webapps
 ```
 You will get token here [Create Token](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#:~:text=To%20create%20a%20non%2Dexpiring,with%20that%20generated%20token%20data.)
+Put this token in Manage jenkins-->credential section as secret text. So k8s interact with jenkins
 
