@@ -127,6 +127,10 @@ sudo apt-get install jenkins -y
 ```bash
 docker run -d --name nexus -p 8081:8081 sonatype/nexus3:latest
 ```
+```
+username: admin
+password path inside nexus docker container: /opt/sonatype/sonatype-work/nexus3/admin.password
+```
 ### 7. Trivy
 
 ```bash
