@@ -72,13 +72,8 @@ unzip awscliv2.zip
 sudo ./aws/install
 
 #install Eksctl
-# Download and extract the latest release of eksctl
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-
-# Move the binary to a directory in your PATH
 sudo mv /tmp/eksctl /usr/local/bin
-
-# Verify the installation
 eksctl version
 ```
 ### 3. Docker Script
