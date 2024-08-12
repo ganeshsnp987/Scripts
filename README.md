@@ -1,5 +1,5 @@
 #  Scrpits
-### 1. Script1 for Java, Jenkins, Docker, SonarQube, Trivy.
+### 1. Script1 for Java, Jenkins, Docker, SonarQube, Trivy, Helm.
 
 ```bash
 #!/bin/bash
@@ -48,6 +48,10 @@ curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo gpg --dea
 echo "deb [signed-by=/usr/share/keyrings/nodesource-archive-keyring.gpg] https://deb.nodesource.com/node_16.x focal main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 sudo apt update
 sudo apt install -y nodejs
+
+#install HELM
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+helm version
 ```
 
 ### 2. Script 2 for Terraform, kubectl, Aws-cli, Eksctl
