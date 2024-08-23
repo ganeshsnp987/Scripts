@@ -112,9 +112,15 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 ```
 
 ### 4. SonarQube
+Community version: Scan Analysis perform only "master" or "main" in branch github repository
 ```bash
 docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
 ```
+sonarqube-community-branch-plugin: Developer version Perform scan analysis on all branches in github repository
+```bash
+docker run -d --name sonar -p 9000:9000 mc1arke/sonarqube-with-community-branch-plugin
+```
+
 ### 5. Installing Jenkins on Ubuntu
 
 ```bash
