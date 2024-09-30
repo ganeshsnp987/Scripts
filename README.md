@@ -110,6 +110,21 @@ sudo ./aws/install
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bin
 eksctl version
+
+# Verify the versions of all installed tools
+echo "Verifying installed tools versions:"
+
+echo "Terraform Version:"
+terraform version
+
+echo "Kubectl Version:"
+kubectl version --client
+
+echo "AWS CLI Version:"
+aws --version
+
+echo "eksctl Version:"
+eksctl version
 ```
 ### 3. Docker Script
 
