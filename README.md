@@ -629,3 +629,19 @@ kubectl describe secret mysecretname -n webapps
 You will get token here [Create Token](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#:~:text=To%20create%20a%20non%2Dexpiring,with%20that%20generated%20token%20data.)
 Put this token in Manage jenkins-->credential section as secret text. So k8s interact with jenkins
 
+
+### 14. Install Prometheus and Grafana On the new Server:
+To create a system user or system account, run the following command:
+```bash
+sudo useradd \
+    --system \
+    --no-create-home \
+    --shell /bin/false prometheus
+```
+Let’s check the latest version of Prometheus from the [download page](https://prometheus.io/download/).
+You can use the curl or wget command to download Prometheus:
+```bash
+wget https://github.com/prometheus/prometheus/releases/download/v2.47.1/prometheus-2.47.1.linux-amd64.tar.gz
+```
+
+
