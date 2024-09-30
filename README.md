@@ -47,10 +47,41 @@ sudo apt-get install trivy -y
 curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/nodesource-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/nodesource-archive-keyring.gpg] https://deb.nodesource.com/node_16.x focal main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 sudo apt update
-sudo apt install -y nodejs
+sudo apt install nodejs -y
+sudo apt install npm -y
 
 #install HELM
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+helm version
+
+# Verify the versions of all installed tools
+echo "Verifying installed tools versions:"
+
+echo "Java Version:"
+java --version
+
+echo "Jenkins Version:"
+jenkins --version
+
+echo "Docker Version:"
+docker --version
+
+echo "Docker Compose Plugin Version:"
+docker compose version
+
+echo "SonarQube Status (check if it's running):"
+docker ps | grep sonar
+
+echo "Trivy Version:"
+trivy --version
+
+echo "Node.js Version:"
+node -v
+
+echo "npm Version:"
+npm -v
+
+echo "Helm Version:"
 helm version
 ```
 
