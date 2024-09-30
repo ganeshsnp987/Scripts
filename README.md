@@ -737,7 +737,7 @@ If you go to targets, you should see only one – Prometheus target. It scrapes 
 
 
 
-### 16.Install Node Exporter on Ubuntu 22.04
+### 16. Install Node Exporter on Ubuntu 22.04
 
 Next, we’re going to set up and configure Node Exporter to collect Linux system metrics like CPU load and disk I/O. Node Exporter will expose these as Prometheus-style metrics. Since the installation process is very similar, I’m not going to cover as deep as Prometheus.
 First, let’s create a system user for Node Exporter by running the following command:
