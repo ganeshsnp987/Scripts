@@ -1,5 +1,5 @@
 #  Scrpits
-### 1. Script1 for Java, Jenkins, Docker, SonarQube, Trivy, Helm.
+### 1. Script1 for Java, Jenkins, Docker, SonarQube, Trivy, Helm, Docker-scout
 
 ```bash
 #!/bin/bash
@@ -54,6 +54,9 @@ sudo apt install npm -y
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 helm version
 
+#install Docker-scout
+curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sudo sh -s -- -b /usr/local/bin
+
 # Verify the versions of all installed tools
 echo "Verifying installed tools versions:"
 
@@ -83,6 +86,10 @@ npm -v
 
 echo "Helm Version:"
 helm version
+
+echo "Dockr-scout Version:"
+docker-scout version
+
 ```
 
 ### 2. Script 2 for Terraform, kubectl, Aws-cli, Eksctl
