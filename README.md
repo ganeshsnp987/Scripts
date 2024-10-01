@@ -55,6 +55,7 @@ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 helm version
 
 #install Docker-scout
+#docker login first then run below command.
 curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sudo sh -s -- -b /usr/local/bin
 
 # Verify the versions of all installed tools
