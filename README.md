@@ -890,7 +890,7 @@ password admin
 To visualize metrics, you need to add a data source first. Click Add data source and select Prometheus.For the URL, enter localhost:9090 and click Save and test. You can see Data source is working. Click on Save and Test. Let’s add Dashboard for a better view. Click on Import Dashboard paste this code 1860 and click on load. Select the Datasource and click on Import. You will see this output.
 
 
-# KIND Cluster Setup Guide
+### 18. KIND Cluster Setup Guide
 
 ## 1. Installing KIND and kubectl
 Install KIND and kubectl using the provided [script](https://github.com/LondheShubham153/kubestarter/blob/main/kind-cluster/install.sh):
